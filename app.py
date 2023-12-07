@@ -52,10 +52,10 @@ def api_upgrades_info():
 
 if __name__ == "__main__":
     # Set up command-line argument parsing
-    parser = argparse.ArgumentParser(description='Get OpenShift upgrade information.')
+    parser = argparse.ArgumentParser(description='Get OpenShift channel information.')
     parser.add_argument('--api', action='store_true', help='Start Flask app for OpenShift upgrades API')
     parser.add_argument('--version', help='The OpenShift version')
-    parser.add_argument('--channel', help='The upgrade channel')
+    parser.add_argument('--channel', help='stable, fast, candidate')
 
     # Parse the command-line arguments
     args = parser.parse_args()
