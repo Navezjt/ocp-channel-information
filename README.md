@@ -1,4 +1,4 @@
-# OpenShift Channel Information App
+# OpenShift Channel Information
 
 This application shows current available versions in a specified channel (stable, fast or candidate). It can be run either as a command-line script or as a Flask API.
 
