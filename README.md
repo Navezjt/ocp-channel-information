@@ -12,6 +12,7 @@ Make sure you have Python installed on your machine.
 
 ```bash
 python app.py --channel <channel> --version <version>
+```
 
 Replace <channel> with either 'fast', 'stable', or 'candidate', and <version> with the desired OpenShift version (e.g., '4.14', '4.12', etc.).
 
@@ -22,8 +23,10 @@ Replace <channel> with either 'fast', 'stable', or 'candidate', and <version> wi
 Make sure you have Python and Flask installed on your machine.
 
 ### Usage
+
 ```bash
 python app.py --api
+```
 
 The Flask app will run on http://127.0.0.1:5000. You can access the OpenShift version information API using the following endpoint:
 http://127.0.0.1:5000/api/upgrades_info?channel=<channel>&version=<version>
@@ -40,15 +43,20 @@ Make sure you have Docker installed on your machine.
 
 ```bash
 docker build -t openshift-channel-app .
+```
 
 ### Run Docker Container
 
 Run as Command-Line Script
+
 ```bash
 docker run openshift-channel-app --channel <channel> --version <version>
+```
 
 Run as Flask API
 ```bash
+```
+
 docker run -p 5000:5000 openshift-channel-app --api
 
 Access the API at:
@@ -60,6 +68,8 @@ Replace <channel> with either 'fast', 'stable', or 'candidate', and <version> wi
 
 ```bash
 docker run openshift-channel-app --channel fast --version 4.14
+```
+
 This command will display the available versions for the specified channel.
 
 
