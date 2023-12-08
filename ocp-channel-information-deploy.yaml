@@ -23,6 +23,9 @@ spec:
         image: ghcr.io/backchristoffer/ocp-channel-info:latest
         ports:
         - containerPort: 5000
+        env:
+        - name: API_MODE
+          value: "true"
         resources:
           requests:
             memory: "64Mi"  
