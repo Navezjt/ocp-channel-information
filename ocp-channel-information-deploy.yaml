@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: ocp-channel-info
-        image: your-docker-image:tag
+        image: ghcr.io/backchristoffer/ocp-channel-info:latest
         ports:
         - containerPort: 5000
         resources:
