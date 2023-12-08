@@ -55,9 +55,8 @@ docker run openshift-channel-app --channel <channel> --version <version>
 
 Run as Flask API
 ```bash
-```
-
 docker run -p 5000:5000 openshift-channel-app --api
+```
 
 Access the API at:
 http://127.0.0.1:5000/api/upgrades_info?channel=<channel>&version=<version>
