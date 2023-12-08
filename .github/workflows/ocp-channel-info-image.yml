@@ -24,6 +24,6 @@ jobs:
     - name: Build the Docker image and push to github
       run: docker build . --file Dockerfile --tag ocp-channel-info:latest
     - name: Tag image
-      run: docker image tag iperf3handler:latest ghcr.io/backchristoffer/ocp-channel-info:latest
+      run: docker image tag ocp-channel-info:latest ghcr.io/backchristoffer/ocp-channel-info:latest
     - name: Push image to github
       run: docker image push ghcr.io/backchristoffer/ocp-channel-info:latest
