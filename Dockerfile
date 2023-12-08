@@ -9,6 +9,10 @@ RUN pip install --no-cache-dir pipenv && \
 
 COPY . /app
 
+RUN chgrp -R 0 /app && \ 
+         chmod -R g=u /app
+USER 1001
+
 EXPOSE 5000
 
 ENV FLASK_APP=app.py
