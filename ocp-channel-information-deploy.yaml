@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ocp-channel-information
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocp-channel-info
+  namespace: ocp-channel-information
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ocp-channel-info
+  template:
+    metadata:
+      labels:
+        app: ocp-channel-info
+    spec:
+      containers:
+      - name: ocp-channel-info
+        image: your-docker-image:tag
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"  
+            cpu: "250m"     
+          limits:
+            memory: "128Mi" 
+            cpu: "500m" 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocp-channel-info-service
+  namespace: ocp-channel-information
+spec:
+  selector:
+    app: ocp-channel-info
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ocp-channel-info-route
+  namespace: ocp-channel-information
+spec:
+  to:
+    kind: Service
+    name: ocp-channel-info-service
+  port:
+    targetPort: 5000
