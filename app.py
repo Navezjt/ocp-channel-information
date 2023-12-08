@@ -3,6 +3,7 @@ import argparse
 from flask import Flask, request, jsonify
 import os
 
+
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
