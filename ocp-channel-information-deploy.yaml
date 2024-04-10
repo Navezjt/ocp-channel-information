@@ -19,21 +19,20 @@ spec:
         app: ocp-channel-info
     spec:
       containers:
-      - name: ocp-channel-info
-        image: ghcr.io/backchristoffer/ocp-channel-info:latest
-        ports:
-        - containerPort: 5000
-        env:
-        - name: API_MODE
-          value: "true"
-        resources:
-          requests:
-            memory: "64Mi"  
-            cpu: "250m"     
-          limits:
-            memory: "128Mi" 
-            cpu: "500m" 
-
+        - env:
+            - name: API_MODE
+              value: "true"
+          image: ghcr.io/backchristoffer/ocp-channel-info:latest
+          name: ocp-channel-info
+          ports:
+            - containerPort: 5000
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "128Mi"
+            requests:
+              cpu: "250m"
+              memory: "64Mi"
 ---
 apiVersion: v1
 kind: Service
@@ -41,13 +40,12 @@ metadata:
   name: ocp-channel-info-service
   namespace: ocp-channel-information
 spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 5000
   selector:
     app: ocp-channel-info
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 5000
-
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -55,8 +53,8 @@ metadata:
   name: ocp-channel-info-route
   namespace: ocp-channel-information
 spec:
+  port:
+    targetPort: 5000
   to:
     kind: Service
     name: ocp-channel-info-service
-  port:
-    targetPort: 5000

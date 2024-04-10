@@ -1,0 +1,2 @@
+# https://nvie.com/posts/pin-your-packages/
+pipenv==2023.11.15
